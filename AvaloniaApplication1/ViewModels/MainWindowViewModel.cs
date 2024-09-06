@@ -8,22 +8,15 @@ namespace AvaloniaApplication1.ViewModels
     public partial class MainWindowViewModel : ViewModelBase
     {
         [ObservableProperty]
-        private int _width;
+        private int _width = 50;
 
         [ObservableProperty]
-        private int _height;
+        private int _height = 50;
 
         [ObservableProperty]
-        private Stretch _stretch;
+        private Stretch _stretch = Stretch.Uniform;
 
-        public ObservableCollection<Stretch> EnumStrechs { get; } = new();
-
-        public MainWindowViewModel()
-        {
-            foreach (var item in Enum.GetValues<Stretch>())
-            {
-                EnumStrechs.Add(item);
-            }
-        }
+        [ObservableProperty]
+        private StretchDirection _stretchDirection = StretchDirection.Both;
     }
 }

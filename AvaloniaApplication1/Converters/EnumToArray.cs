@@ -4,7 +4,7 @@ using System.Globalization;
 
 namespace AvaloniaApplication1.Converters;
 
-public class EnumNameToArray : IValueConverter
+public class EnumToArray : IValueConverter
 {
     public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
@@ -24,7 +24,7 @@ public class EnumNameToArray : IValueConverter
             throw new ArgumentException("Value must be Enum Type", nameof(value));
         }
 
-        return Enum.GetNames(type);
+        return Enum.GetValues(type);
     }
 
     public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)

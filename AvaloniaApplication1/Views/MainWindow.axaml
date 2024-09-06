@@ -32,7 +32,7 @@
                     BorderBrush="CadetBlue"
                     BorderThickness="2"
                     >
-                <Viewbox Stretch="{Binding Stretch}">
+                <Viewbox Stretch="{Binding Stretch}" StretchDirection="{Binding StretchDirection}">
                     <Ellipse Width="50"
                              Height="50"
                              Fill="CornflowerBlue"
@@ -53,7 +53,15 @@
                         Maximum="{Binding #viewBoxBorder.Bounds.Height}"
                         />
                 <TextBlock Text="Stretch" FontSize="20" />
-                <ComboBox SelectedValue="{Binding Stretch}" ItemsSource="{Binding EnumStrechs}">
+                <ComboBox SelectedValue="{Binding Stretch}" ItemsSource="{Binding Source={x:Type media:Stretch}, Converter={StaticResource EnumToArray}}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding .}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <TextBlock Text="Stretch Direction" FontSize="20" />
+                <ComboBox SelectedValue="{Binding StretchDirection}" ItemsSource="{Binding Source={x:Type media:StretchDirection}, Converter={StaticResource EnumToArray}}">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding .}" />

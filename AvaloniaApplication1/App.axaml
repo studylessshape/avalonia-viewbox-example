@@ -14,4 +14,8 @@
     <Application.Styles>
         <FluentTheme />
     </Application.Styles>
+
+    <Application.Resources>
+        <converter:EnumToArray x:Key="EnumToArray" />
+    </Application.Resources>
 </Application>
