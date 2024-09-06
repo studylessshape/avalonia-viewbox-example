@@ -1,0 +1,67 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:AvaloniaApplication1.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:media="using:Avalonia.Media"
+        mc:Ignorable="d"
+        d:DesignWidth="800"
+        d:DesignHeight="450"
+        x:Class="AvaloniaApplication1.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="AvaloniaApplication1"
+        >
+
+    <Design.DataContext>
+        <!--
+            This only sets the DataContext for the previewer in an IDE,
+            to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs)
+        -->
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
+
+    <Grid ColumnDefinitions="*,*" Margin="40">
+        <Border BorderBrush="DarkOrange"
+                BorderThickness="2"
+                Name="viewBoxBorder"
+                Height="{Binding #viewBoxBorder.Bounds.Width}"
+                >
+            <Border Width="{Binding Width}"
+                    Height="{Binding Height}"
+                    BorderBrush="CadetBlue"
+                    BorderThickness="2"
+                    >
+                <Viewbox Stretch="{Binding Stretch}">
+                    <Ellipse Width="50"
+                             Height="50"
+                             Fill="CornflowerBlue"
+                             />
+                </Viewbox>
+            </Border>
+        </Border>
+        <Border Grid.Column="1" Padding="20 0">
+            <StackPanel>
+                <TextBlock Text="Width" FontSize="20" />
+                <Slider Value="{Binding Width}"
+                        Minimum="0"
+                        Maximum="{Binding #viewBoxBorder.Bounds.Width}"
+                        />
+                <TextBlock Text="Height" FontSize="20" />
+                <Slider Value="{Binding Height}"
+                        Minimum="0"
+                        Maximum="{Binding #viewBoxBorder.Bounds.Height}"
+                        />
+                <TextBlock Text="Stretch" FontSize="20" />
+                <ComboBox SelectedValue="{Binding Stretch}" ItemsSource="{Binding EnumStrechs}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding .}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </StackPanel>
+        </Border>
+    </Grid>
+
+</Window>
