@@ -4,9 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:media="using:Avalonia.Media"
+        xmlns:uc="using:AvaloniaApplication1.UsersControl"
         mc:Ignorable="d"
-        d:DesignWidth="800"
-        d:DesignHeight="450"
+        Width="600"
+        Height="340"
         x:Class="AvaloniaApplication1.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
@@ -21,16 +22,16 @@
         <vm:MainWindowViewModel />
     </Design.DataContext>
 
-    <Grid ColumnDefinitions="*,*" Margin="40">
+    <Grid ColumnDefinitions="*,*" Margin="20">
         <Border BorderBrush="DarkOrange"
-                BorderThickness="2"
+                BorderThickness="1"
                 Name="viewBoxBorder"
                 Height="{Binding #viewBoxBorder.Bounds.Width}"
                 >
             <Border Width="{Binding Width}"
                     Height="{Binding Height}"
                     BorderBrush="CadetBlue"
-                    BorderThickness="2"
+                    BorderThickness="1"
                     >
                 <Viewbox Stretch="{Binding Stretch}" StretchDirection="{Binding StretchDirection}">
                     <Ellipse Width="50"
@@ -43,11 +44,21 @@
         <Border Grid.Column="1" Padding="20 0">
             <StackPanel>
                 <TextBlock Text="Width" FontSize="20" />
+                <uc:ScaleMark Interval="130"
+                              Foreground="SlateGray"
+                              SplitCount="4"
+                              SplitForeground="LightGray"
+                              />
                 <Slider Value="{Binding Width}"
                         Minimum="0"
                         Maximum="{Binding #viewBoxBorder.Bounds.Width}"
                         />
                 <TextBlock Text="Height" FontSize="20" />
+                <uc:ScaleMark Interval="130"
+                              Foreground="SlateGray"
+                              SplitCount="4"
+                              SplitForeground="LightGray"
+                              />
                 <Slider Value="{Binding Height}"
                         Minimum="0"
                         Maximum="{Binding #viewBoxBorder.Bounds.Height}"
